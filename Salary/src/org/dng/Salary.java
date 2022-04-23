@@ -6,9 +6,20 @@ public class Salary {
         Employees employee2 = new Employees("Sidorov", PaymentType.HOURLY, 800);
         Employees employee3 = new Employees("Petrov", PaymentType.PIECEWORK, 5500);
 
-        System.out.printf("%10s %10s %10s \n", "Surname", "PaymentType", "PaymentValue");
-        System.out.printf("%10s %11s %12.2f \n", employee1.getSurname(), employee1.getPaymentType(), employee1.getPaymentValue());
-        System.out.printf("%10s %11s %12.2f \n", employee2.getSurname(), employee2.getPaymentType(), employee2.getPaymentValue());
-        System.out.printf("%10s %11s %12.2f \n", employee3.getSurname(), employee3.getPaymentType(), employee3.getPaymentValue());
+
+        //task 1
+        System.out.printf("%10s %12s %13s %12s \n", "Surname", "PaymentType", "PaymentValue", "Tax rate(%)");
+        employee1.printSummary1();
+        employee2.printSummary1();
+        employee3.printSummary1();
+        System.out.println();
+
+        //task 2
+        //Surname, TaxRate, PaymentValue, SalaryValue
+        System.out.printf("%10s %12s %13s %11s \n", "Surname", "TaxRate(%)", "PaymentValue", "SalaryValue");
+        employee1.printSummary2();
+        employee2.printSummary2();
+        employee3.printSummary2();
+
     }
 }

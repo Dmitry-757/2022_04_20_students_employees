@@ -20,24 +20,51 @@ public class Employees {
         return paymentType;
     }
 
-    public void setPaymentType(PaymentType paymentType) {
-        this.paymentType = paymentType;
-    }
+    //** unused **
+//    public void setPaymentType(PaymentType paymentType) {
+//        this.paymentType = paymentType;
+//    }
 
     public double getPaymentValue() {
         return paymentValue;
     }
 
-    public void setPaymentValue(double paymentValue) {
-        this.paymentValue = paymentValue;
+    //** unused **
+//    public void setPaymentValue(double paymentValue) {
+//        this.paymentValue = paymentValue;
+//    }
+
+    public double getSalaryValue() {
+        return paymentValue * (100 - paymentType.getTaxRate()) / 100;
     }
 
-    public String getSummary(){
-        return "Employee: "+surname+"  paymentType: "+paymentType+"  paymentValue: "+paymentValue+"(tugrik(s))";
+    //** unused **
+//    public String getSummary() {
+//        return "Employee: " + surname + "  paymentType: " + paymentType + "  paymentValue: " + paymentValue + "(tugrik(s))  TaxRate(%):" + paymentType.getTaxRate();
+//    }
+
+    //** Summary for task1
+    public void printSummary1() {
+        System.out.printf("%10s %11s %14.2f %11d \n", getSurname(), getPaymentType(), getPaymentValue(), paymentType.getTaxRate());
     }
+
+    //** Summary for task2
+    public void printSummary2() {
+        System.out.printf("%10s %11d %14.2f %11s  \n", getSurname(), paymentType.getTaxRate(), getPaymentValue(), getSalaryValue());
+    }
+
 }
 
 enum PaymentType {
-    RATE, HOURLY, PIECEWORK
+    RATE(20), HOURLY(20), PIECEWORK(15);
+    private int taxRate;
+
+    PaymentType(int taxRate) {
+        this.taxRate = taxRate;
+    }
+
+    public int getTaxRate() {
+        return taxRate;
+    }
 }
 
