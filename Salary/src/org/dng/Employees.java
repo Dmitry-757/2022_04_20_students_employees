@@ -5,12 +5,22 @@ public class Employees {
     private String surname;
     private PaymentType paymentType;
     private double paymentValue;
+    private boolean hasChildren = false; //for task 3
 
     public Employees(String surname, PaymentType paymentType, double paymentValue) {
         this.surname = surname;
         this.paymentType = paymentType;
         this.paymentValue = paymentValue;
     }
+
+    //constructor for task 3
+    public Employees(String surname, PaymentType paymentType, double paymentValue, boolean hasChildren) {
+        this.surname = surname;
+        this.paymentType = paymentType;
+        this.paymentValue = paymentValue;
+        this.hasChildren = hasChildren;
+    }
+
 
     public String getSurname() {
         return surname;
@@ -34,8 +44,12 @@ public class Employees {
 //        this.paymentValue = paymentValue;
 //    }
 
+    public int getTaxRate(){
+        return paymentType.getTaxRate() + (hasChildren ? 0 : 5);
+    }
     public double getSalaryValue() {
-        return paymentValue * (100 - paymentType.getTaxRate()) / 100;
+        //childless discrimination ((
+        return paymentValue * (100 - getTaxRate() ) / 100;
     }
 
     //** unused **
@@ -45,12 +59,12 @@ public class Employees {
 
     //** Summary for task1
     public void printSummary1() {
-        System.out.printf("%10s %11s %14.2f %11d \n", getSurname(), getPaymentType(), getPaymentValue(), paymentType.getTaxRate());
+        System.out.printf("%10s %11s %14.2f %11d \n", getSurname(), getPaymentType(), getPaymentValue(), getTaxRate());
     }
 
-    //** Summary for task2
+    //** Summary for task2 & task3
     public void printSummary2() {
-        System.out.printf("%10s %11d %14.2f %11s  \n", getSurname(), paymentType.getTaxRate(), getPaymentValue(), getSalaryValue());
+        System.out.printf("%10s %11d %14.2f %11s  \n", getSurname(), getTaxRate(), getPaymentValue(), getSalaryValue());
     }
 
 }
