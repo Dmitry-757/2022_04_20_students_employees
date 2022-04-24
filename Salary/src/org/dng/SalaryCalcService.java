@@ -55,4 +55,15 @@ public class SalaryCalcService {
                     employee.getPaymentValue(), getSalaryValue(employee));
     }
 
+    //** Summary for task5
+    public static void printSummary5(Employees employee) {
+        if(getCurrencySalaryValue(employee) != 0)
+            System.out.printf("%10s %10s %11d %13.2f   (%8.2f / %7.2f)   \n", employee.getSurname(), employee.isOffshore(),
+                    employee.getTaxRate(), employee.getPaymentValue(), getSalaryValue(employee), getCurrencySalaryValue(employee));
+        else
+            System.out.printf("%10s %10s %11d %13.2f   %9.2f   \n", employee.getSurname(), employee.isOffshore(), employee.getTaxRate(),
+                    employee.getPaymentValue(), getSalaryValue(employee));
+    }
+
+
 }

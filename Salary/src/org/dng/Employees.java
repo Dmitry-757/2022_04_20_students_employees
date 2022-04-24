@@ -6,7 +6,7 @@ public class Employees {
     private PaymentType paymentType;
     private double paymentValue;
     private boolean hasChildren = false; //for task 3
-    private static double currencyRate = 0; //for task 4
+    private boolean isOffshore = false; //for task 5
 
     public Employees(String surname, PaymentType paymentType, double paymentValue) {
         this.surname = surname;
@@ -35,13 +35,25 @@ public class Employees {
         return paymentType;
     }
 
-
     public double getPaymentValue() {
         return paymentValue;
     }
 
     public int getTaxRate() {
-        return paymentType.getTaxRate() + (hasChildren ? 0 : 5);
+        int taxRate;
+        if(isOffshore)
+            taxRate = 0;
+        else
+            taxRate = paymentType.getTaxRate() + (hasChildren ? 0 : 5);
+        return taxRate;
+    }
+
+    public boolean isOffshore() {
+        return isOffshore;
+    }
+
+    public void setOffshore(boolean offshore) {
+        isOffshore = offshore;
     }
 
 }

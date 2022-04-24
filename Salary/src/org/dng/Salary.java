@@ -55,6 +55,25 @@ public class Salary {
         SalaryCalcService.printSummary4(employee6);
         System.out.println();
 
+        //task5
+        /*
+        Фирма переводит часть сотрудников в офшорную зону.
+        Сотрудники, находящиеся в офшоре, не платят налогов. Создать новый отчет с учетом данного нововведения.
+        */
+        Employees employee7 = new Employees("Ivanov_5", PaymentType.RATE, 300, true);
+        Employees employee8 = new Employees("Sidorov_5", PaymentType.HOURLY, 800, false);
+        Employees employee9 = new Employees("Petrov_5", PaymentType.PIECEWORK, 5500, false);
+        //employee7.setOffshore(true);
+        employee8.setOffshore(true);//pass employee to ofshore
+        employee9.setOffshore(true);
+
+        System.out.println("Task 5");
+        System.out.printf("%10s %10s %12s %13s %20s \n", "Surname", "in_ofShore", "TaxRate(%)", "PaymentValue", "SalaryValue (grn/tugr)");
+        System.out.printf("%62s 1/%3.2f \n","current rate", SalaryCalcService.getCurrencyRate());
+        SalaryCalcService.printSummary5(employee7);
+        SalaryCalcService.printSummary5(employee8);
+        SalaryCalcService.printSummary5(employee9);
+        System.out.println();
 
 
     }
