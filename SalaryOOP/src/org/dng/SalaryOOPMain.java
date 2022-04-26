@@ -1,6 +1,6 @@
 package org.dng;
 
-public class SalaryMain {
+public class SalaryOOPMain {
     public static void main(String[] args) {
 
         Employees employee1 = new Employees("Ivanov", PaymentType.RATE, 300);
